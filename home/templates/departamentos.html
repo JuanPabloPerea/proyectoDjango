@@ -1,0 +1,42 @@
+{% load static %}
+<!doctype html>
+<html lang = "en">
+<head>
+    <meta charset = "UTF-8">
+    <meta http-equiv="X-UA-Compatible" content = "IE=edge">
+    <meta name="viewport" content="widt=device, initial-scale=1.0">
+    <title>inicio</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+</head>
+<body>
+
+    <h1>departamentos</h1>
+    <form action ="{% url 'crear_dep' %}" method="POST">
+        {% csrf_token %}
+
+        <input type="numeric" name="codigo" placeholder="codigo del departamento">
+        <input type="text" name="nombre" placeholder="nombre del departamento">
+        <input type="numeric" name="presupuesto" placeholder="presupuesto del departamento">
+        
+        <button>guardar</button>
+
+    </form>
+
+    {% for departamento in departamentos %}
+        <div>
+            <h4>{{departamento.nombre}}</h4>
+            <p>{{departamento.presupuesto}}</p>
+            <form action ="{% url 'elim_dep' departamento.codigo %}" method="POST">
+                {% csrf_token %}
+                <button>eliminar</button>
+            </form>
+        </div>
+    {% empty %}
+        <h2>No hay secciones agregadas</h2>
+    {% endfor %}
+
+
+</body>
+</html>
