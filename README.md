@@ -8,3 +8,5 @@ nombre de la bd: Basedb
 para poder entrar a los endpoints:
 - departamentos: localhost:1234/departamentos
 - empleados: localhost:1234/persoanl/emp
+
+No pude montar la base de datos en GitHub, y tampoco pude terminar el módulo de actualización de datos solo se pueden insertar, mostrar y eliminar datos
